@@ -56,4 +56,5 @@ class HandGestureDataset(Dataset):
         return len(self.hand_gestures)
 
     def __getitem__(self, idx):
-        return {"landmark": self.hand_gestures[idx], "class": self.labels[idx]}
+        # return {"landmark": self.hand_gestures[idx], "class": self.labels[idx]}
+        return self.hand_gestures[idx], self.labels[idx]

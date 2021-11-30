@@ -11,7 +11,8 @@ class HandGestureClassifier(nn.Module):
         self.fc3 = nn.Linear(128, num_classes)
         self.dropout = nn.Dropout(0.2)
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor):
+        x = x.flatten(1)
         x = F.relu(self.fc1(x))
         x = self.dropout(x)
         x = F.relu(self.fc2(x))
