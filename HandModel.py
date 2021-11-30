@@ -5,11 +5,26 @@ class HandModel(object):
     def __init__(self, landmarks):
         self.landmark_names = [
             "wrist",
-            "thumb_0", "thumb_1", "thumb_2", "thumb_3",
-            "index_0", "index_1", "index_2", "index_3",
-            "middle_0", "middle_1", "middle_2", "middle_3",
-            "ring_0", "ring_1", "ring_2", "ring_3",
-            "pinky_0", "pinky_1", "pinky_2", "pinky_3",
+            "thumb_0",
+            "thumb_1",
+            "thumb_2",
+            "thumb_3",
+            "index_0",
+            "index_1",
+            "index_2",
+            "index_3",
+            "middle_0",
+            "middle_1",
+            "middle_2",
+            "middle_3",
+            "ring_0",
+            "ring_1",
+            "ring_2",
+            "ring_3",
+            "pinky_0",
+            "pinky_1",
+            "pinky_2",
+            "pinky_3",
         ]
 
         # Normalize landmarks
@@ -66,19 +81,11 @@ class HandModel(object):
             ("middle_3", "pinky_3"),
             ("ring_3", "pinky_3"),
         ]
-        return np.array(
-            list(
-                map(
-                    lambda x, y: self.get_distance_by_names(landmarks, x, y),
-                    tuple_names
-                )
-            )
-        )
+        return np.array(list(map(lambda t: self.get_distance_by_names(landmarks, t[0], t[1]), tuple_names)))
 
     def get_distance_by_names(self, landmarks, name_from, name_to):
         landmark_from = landmarks[self.landmark_names.index(name_from)]
         landmark_to = landmarks[self.landmark_names.index(name_to)]
         distance = np.linalg.norm(landmark_to - landmark_from)
-        assert len(distance) == 1
-        return distance[0]
-
+        # assert len(distance) == 1
+        return distance
