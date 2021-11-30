@@ -1,0 +1,7 @@
+deep-trainer
+mediapipe
+numpy
+opencv-python
+pandas
+torch
+# Probably missing stuff
